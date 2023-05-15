@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ChatClient.MVVM.Core
 {
-    class RelayCommand
+    public class RelayCommand : ICommand
     {
         private Action<object> execute;
         private Func<object, bool> canExecute;
@@ -31,7 +31,7 @@ namespace ChatClient.MVVM.Core
 
         public void Execute(object parameter)
         {
-            this.Execute(parameter);
+            this.execute(parameter);
         }
     }
 }

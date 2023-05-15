@@ -1,10 +1,18 @@
-﻿namespace ChatServer
+﻿using System.Net;
+using System.Net.Sockets;
+
+namespace ChatServer
 {
-    internal class Program
+    class Program
     {
+        static TcpListener _listener;
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            _listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 7523);
+            _listener.Start();
+
+            var client = _listener.AcceptTcpClient();
+            Console.WriteLine("Client has connect!");
         }
     }
 }
